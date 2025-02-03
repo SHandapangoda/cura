@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
+    email_verified = models.BooleanField(default=False)
     ROLE_CHOICES = [
         ('CARE_SEEKER', 'Care Seeker'),
         ('CARE_PROVIDER', 'Care Provider'),
