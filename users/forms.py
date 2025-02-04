@@ -2,17 +2,13 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
-class CareSeekerSignupForm(UserCreationForm):
+class SignupForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(max_length=254, required=True)
+    phone_number = forms.CharField(max_length=15, required=True)
+    address = forms.CharField(widget=forms.Textarea, required=True)
+
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2', 'first_name', 'last_name', 'phone_number', 'address']
-        widgets = {
-            'role': forms.HiddenInput(),
-        }
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.role = 'CARE_SEEKER'
-        if commit:
-            user.save()
-        return user
+        fields = ['first_name', 'last_name', 'email', 'phone_number', 'address', 'password1', 'password2']

@@ -117,15 +117,21 @@ USE_I18N = True
 USE_TZ = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Replace with your SMTP server
+EMAIL_HOST = 'smtp.mail.yahoo.com'  # Replace with your SMTP server
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@gmail.com'  # Replace with your email
-EMAIL_HOST_PASSWORD = 'your_email_password'  # Replace with your email password or app password
-DEFAULT_FROM_EMAIL = 'your_email@gmail.com'  # Replace with your email
+EMAIL_HOST_USER = 'hsithum98@yahoo.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'Alpha@123'  # Replace with your email password or app password
+DEFAULT_FROM_EMAIL = 'hsithum98@yahoo.com'  # Replace with your email
+EMAIL_VERIFICATION_TOKEN_MAX_AGE = 86400
+
+LOGIN_REDIRECT_URL = 'landing_page'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
+AUTHENTICATION_BACKENDS = [
+    'users.backends.EmailAuthBackend',  # Custom backend
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
 STATIC_URL = 'static/'
 
 # Default primary key field type

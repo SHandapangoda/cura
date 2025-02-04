@@ -9,7 +9,8 @@ class RoleBasedAccessMiddleware:
         # List of URLs to exclude from redirection
         excluded_urls = [
             reverse('login'),  # Exclude login page
-            reverse('logout'),  # Exclude logout page
+            reverse('signup'),  # Exclude signup page
+            reverse('verify_email', args=['token']),  # Exclude email verification page
             reverse('password_reset'),  # Exclude password reset page
             reverse('password_reset_done'),  # Exclude password reset done page
             reverse('password_reset_confirm', args=['uidb64', 'token']),  # Exclude password reset confirm page
