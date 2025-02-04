@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Cura - Home{% endblock %}
+{% block content %}
+<h2>Welcome to Cura</h2>
+<p>Choose your role to sign up:</p>
+<ul>
+    <li><a href="{% url 'care_seeker_signup' %}">Sign up as Care Seeker</a></li>
+    <li><a href="{% url 'care_provider_signup' %}">Sign up as Care Provider</a></li>
+    <li><a href="{% url 'guardian_signup' %}">Sign up as Guardian</a></li>
+</ul>
+{% endblock %}

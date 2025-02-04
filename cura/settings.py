@@ -128,6 +128,7 @@ EMAIL_VERIFICATION_TOKEN_MAX_AGE = 86400
 LOGIN_REDIRECT_URL = 'landing_page'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+
 AUTHENTICATION_BACKENDS = [
     'users.backends.EmailAuthBackend',  # Custom backend
     'django.contrib.auth.backends.ModelBackend',  # Default backend
