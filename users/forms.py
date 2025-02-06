@@ -3,46 +3,38 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
 class CareSeekerSignupForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(max_length=254, required=True)
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
     phone_number = forms.CharField(max_length=15, required=True)
     address = forms.CharField(widget=forms.Textarea, required=True)
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'phone_number', 'address', 'password1', 'password2']
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.role = 'CARE_SEEKER'
-        if commit:
-            user.save()
-        return user
+        fields = ['email', 'first_name', 'last_name', 'phone_number', 'address', 'password1', 'password2']
 
 class CareProviderSignupForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(max_length=254, required=True)
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    phone_number = forms.CharField(max_length=15, required=True)
+    address = forms.CharField(widget=forms.Textarea, required=True)
+    experience = forms.CharField(widget=forms.Textarea, required=True)  # Additional field for care providers
+    education = forms.CharField(widget=forms.Textarea, required=True)  # Additional field for care providers
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['email', 'first_name', 'last_name', 'phone_number', 'address', 'experience', 'education', 'password1', 'password2']
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.role = 'CARE_PROVIDER'
-        if commit:
-            user.save()
-        return user
 
 class GuardianSignupForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-    phone_number = forms.CharField(max_length=15, required=True)
+    email = forms.EmailField(max_length=254, required=True)
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    phone_number = forms.CharField(max_length=10, required=True)
+    address = forms.CharField(widget=forms.Textarea, required=True)
+    relationship_to_care_seeker = forms.CharField(max_length=100, required=True)  # Additional field for guardians
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'phone_number', 'password1', 'password2']
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.role = 'GUARDIAN'
-        if commit:
-            user.save()
-        return user
+        fields = ['email', 'first_name', 'last_name', 'phone_number', 'address', 'relationship_to_care_seeker', 'password1', 'password2']

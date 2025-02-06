@@ -79,10 +79,14 @@ WSGI_APPLICATION = 'cura.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+'default': {
+'ENGINE': 'django.db.backends.postgresql',
+'NAME': 'myproject',
+'USER': 'myprojectuser',
+'PASSWORD': 'password',
+'HOST': 'localhost',
+'PORT': '',
+}
 }
 
 AUTH_USER_MODEL = 'users.User'
@@ -123,7 +127,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'hsithum98@yahoo.com'  # Replace with your email
 EMAIL_HOST_PASSWORD = 'Alpha@123'  # Replace with your email password or app password
 DEFAULT_FROM_EMAIL = 'hsithum98@yahoo.com'  # Replace with your email
-EMAIL_VERIFICATION_TOKEN_MAX_AGE = 86400
+EMAIL_VERIFICATION_TOKEN_MAX_AGE = 3600
 
 LOGIN_REDIRECT_URL = 'landing_page'
 # Static files (CSS, JavaScript, Images)

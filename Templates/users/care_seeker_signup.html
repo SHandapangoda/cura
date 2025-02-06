@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Care Seeker Signup - Cura{% endblock %}
+{% block content %}
+<h2>Care Seeker Signup</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+<p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+{% endblock %}
